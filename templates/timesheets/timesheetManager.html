@@ -1,0 +1,93 @@
+<!-- templates/registration/loginT.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'editTimesheet.css' %}?{% now " U" %}" type="text/css" />{% endblock %}
+{% block title %}Teams list{% endblock %}
+{% block mainContent %}
+<div class="mainContainer">
+    <div class="formContainer">
+            {% csrf_token %}
+            <div class="buttonsContainer">
+                <button class="goBack">Go back</button>
+                <button class="acceptTimesheet" value="{{ timesheet.pk }}">Accept</button>
+                <button class="sendBackTimesheet" value="{{ timesheet.pk }}">Send back</button>
+            </div>
+            <textarea class="sendBackComment" rows="5" placeholder="Comment.."></textarea>
+            <table class="timesheetTable">
+                <tr>
+                    <th>Date</th>
+                    <th>Day</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Break</th>
+                    <th>Work time</th>
+                </tr>
+                {% for day in date %}
+                <tr>
+                    <td><p class="fullDate">{{ day.fullDate }}</p></td>
+                    <td><p class="dayOfWeek">{{ day.dayOfWeek }}</p></td>
+                    <td><input class="startTimeInput" type="time" value="{{ day.startTime }}" disabled></td>
+                    <td><input class="endTimeInput" type="time" value="{{ day.endTime }}" disabled></td>
+                    <td><input class="breakTimeInput" type="time" value="{{ day.breakTime }}" disabled></td>
+                    <td><input class="workTimeInput" type="time" value="{{ day.workTime }}" disabled></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><input class="totalWorkTimeInput" type="text" value="Total:" disabled></td>
+                    <td><input class="totalWorkTimeInput" type="text" value="{{ totalTime }}" disabled></td>
+                </tr>
+            </table>
+            <div class="buttonsContainer">
+                <button class="goBack">Go back</button>
+                <button class="acceptTimesheet" value="{{ timesheet.pk }}">Accept</button>
+                <button class="sendBackTimesheet" value="{{ timesheet.pk }}">Send back</button>
+            </div>
+            </div>
+</div>
+
+{% endblock %}
+{% block jsContent %}
+$(document).ready(function() {
+    $(".acceptTimesheet").click(function() {
+        var timesheetPk = $(this).val();
+        $.ajax({
+            url: '/timesheets/timesheetsManager/' + timesheetPk,
+            type: 'post',
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'acceptTimesheet',
+                timesheetPk: timesheetPk,
+            },
+            success: function(json) {
+                location.href="{% url 'timesheetsManagerList' %}";
+            },
+        })
+    })
+    $(".sendBackTimesheet").click(function() {
+        var timesheetPk = $(this).val();
+        var sendBackComment = document.getElementsByClassName("sendBackComment")[0].value;
+        console.log(sendBackComment);
+        $.ajax({
+            url: '/timesheets/timesheetsManager/' + timesheetPk,
+            type: 'post',
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'sendBackTimesheet',
+                timesheetPk: timesheetPk,
+                sendBackComment: sendBackComment,
+            },
+            success: function(json) {
+                location.href="{% url 'timesheetsManagerList' %}";
+            },
+        })
+    })
+    $(".goBack").click(function() {
+        location.href="{% url 'timesheetsManagerList' %}";
+    })
+})
+{% endblock %}

@@ -1,0 +1,83 @@
+<!-- templates/registration/loginT.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'absenceRequestsToAcceptList.css' %}?{% now " U" %}" type="text/css" />{% endblock %}
+{% block title %}Teams list{% endblock %}
+{% block mainContent %}
+<div class="mainContainer">
+    <div class="tableContainer">
+            <table class="absenceRequestsTable">
+                <tr>
+                    <th>Name</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Work days</th>
+                    <th>Absence type</th>
+                    <th></th>
+                </tr>
+                {% if absenceRequestsList %}
+                {% for absenceRequest in absenceRequestsList %}
+                <tr>
+                    <td><p class="absenceRequestOwner">{{ absenceRequest.owner.get_full_name }}</p></td>
+                    <td><p class="absenceRequestStartDate">{{ absenceRequest.startDate }}</p></td>
+                    <td><p class="absenceRequestEndDate">{{ absenceRequest.endDate }}</p></td>
+                    <td><p class="absenceRequestWorkDays">{{ absenceRequest.workDays }}</p></td>
+                    <td><p class="absenceRequestType">{{ absenceRequest.getAbsenceRequestType }}</p></td>
+                    <td><p class="absenceRequestAction"><button class="approveButton" value="{{ absenceRequest.pk }}">Approve</button> <button class="declineButton" value="{{ absenceRequest.pk }}">Decline</button></p></td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td><p class="absenceRequestOwner">None</p></td>
+                    <td><p class="absenceRequestStartDate">None</p></td>
+                    <td><p class="absenceRequestEndDate">None</p></td>
+                    <td><p class="absenceRequestWorkDays">None</p></td>
+                    <td><p class="absenceRequestType">None</p></td>
+                    <td><p class="absenceRequestAction">None</p></td>
+                </tr>
+                {% endif %}
+            </table>
+    </div>
+    {% if messages %}
+    <div class="messagesContainer" id="messagesContainer">
+        {% for message in messages %}
+        {{ message }}
+        <br>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+{% block jsContent %}
+    $(".approveButton").click(function() {
+        var absenceRequestPk = $(this).val();
+        $.ajax({
+            url: '/absences/absenceRequestsManagerList',
+            type: 'post',
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'approveAbsenceRequest',
+                absenceRequestPk: absenceRequestPk,
+            },
+            success: function(json) {
+                window.location.reload(true);
+            },
+        })
+    })
+    $(".declineButton").click(function() {
+        var absenceRequestPk = $(this).val();
+        $.ajax({
+            url: '/absences/absenceRequestsManagerList',
+            type: 'post',
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'declineAbsenceRequest',
+                absenceRequestPk: absenceRequestPk,
+            },
+            success: function(json) {
+                window.location.reload(true);
+            },
+        })
+    })
+{% endblock %}

@@ -1,0 +1,25 @@
+<!-- templates/registration/loginT.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'authentication.css' %}?{% now " U" %}" type="text/css" />{% endblock %}
+{% block title %}Teams list{% endblock %}
+{% block mainContent %}
+<div class="mainContainer">
+    <div class="formContainer">
+        <h2> Members:</h2>
+        <form  method="POST">
+            {% csrf_token %}
+            <select class="selectMembers" id="id_members" multiple="" name="teamMembers" required="">
+                {% for teamCandidate in teamCandidates %}
+                <option value="{{ teamCandidate.pk }}">{{ teamCandidate.get_full_name }}</option>
+                {% endfor %}
+            </select></br>
+            <input type="submit" value="Add">
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block jsContent %}
+
+{% endblock %}

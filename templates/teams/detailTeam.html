@@ -1,0 +1,39 @@
+<!-- templates/registration/loginT.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'teams.css' %}?{% now " U" %}" type="text/css" />{% endblock %}
+{% block title %}Teams list{% endblock %}
+{% block mainContent %}
+<div class="mainContainer">
+    <div class="formContainer">
+        <h1>{{ team.name }}</h1><br>
+        <h2> Managers:</h2>
+        {% for teamManager in team.managers.all %}
+        {{ teamManager.get_full_name }}<br>
+        {% endfor %}
+        <h2> Members:</h2>
+        <form action="{% url 'detailTeam' team.pk %}" method="POST">
+            {% csrf_token %}
+            <select class="selectMembers" id="id_members" multiple="" name="teamMembers" required="">
+                {% for teamMember in team.users.all %}
+                <option value="{{ teamMember.pk }}">{{ teamMember.get_full_name }}</option>
+                {% endfor %}
+            </select></br>
+            <input type="submit" value="Delete">
+        </form>
+         <a class="sideBarLink" href="{% url 'addTeamMember' team.pk %}">Add new member</a>
+    </div>
+                {% if messages %}
+        <div class="messagesContainer" id="messagesContainer">
+                {% for message in messages %}
+                    {{ message }}
+                    <br>
+                {% endfor %}
+        </div>
+                {% endif %}
+</div>
+{% endblock %}
+{% block jsContent %}
+
+{% endblock %}

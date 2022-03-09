@@ -1,0 +1,29 @@
+<!-- templates/registration/loginT.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'authentication.css' %}?{% now " U" %}" type="text/css" />{% endblock %}
+{% block title %}Resend activation email{% endblock %}
+{% block mainContent %}
+<div class="mainContainer">
+    <div class="loginContainer">
+        <span class="formTitleSpan">Send activation email</span>
+        <form action="{% url 'resendActivationEmail' %}" method="post">
+            {% csrf_token %}
+            <span class="formLabel">Username:</span>
+            <input name="username" type="text" id="id_username">
+            <button type="submit">Submit</button>
+        </form>
+        {% if messages %}
+        <div class="messagesContainer" id="messagesContainer">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+{% block jsContent %}
+
+{% endblock %}

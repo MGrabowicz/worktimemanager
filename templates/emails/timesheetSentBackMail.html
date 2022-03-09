@@ -1,0 +1,9 @@
+{% autoescape off %}
+Hi {{user.get_full_name}}!
+
+Your timesheet for {{ timesheetMonth }} {{ timesheetYear }} has been sent back for change by your manager.
+Comment:
+{{ timesheetComment }}
+
+You should change things pointed by your manager and sent it for approval.
+{% endautoescape %}

@@ -1,0 +1,30 @@
+<!-- templates/registration/loginT.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'authentication.css' %}?{% now " U" %}" type="text/css" />{% endblock %}
+{% block title %}Sign up{% endblock %}
+{% block mainContent %}
+<div class="mainContainer">
+    <div class="formContainer">
+        <span class="formTitleSpan">Sign up</span>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in signupForm %}
+            <span class="formLabel">{{ field.label_tag }}</span>
+            {{ field }}
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+            {% if signupForm.errors %}
+            <div class="messagesContainer" id="messagesContainer">
+                {{ signupForm.username.errors }}
+                {{ signupForm.password2.errors }}
+            </div>
+                {% endif %}
+    </div>
+</div>
+{% endblock %}
+{% block jsContent %}
+
+{% endblock %}

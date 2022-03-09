@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet"
+          href="{% static 'absenceRequest.css' %}?{% now " U" %}"
+          type="text/css"/>
+    <script type="text/javascript" src="{% static 'newAbsence.js' %}?{% now " U" %}"></script>
+{% endblock %}
+{% block title %}Absence request{% endblock %}
+{% block mainContent %}
+    <div class="mainContainer">
+        <div class="messagesContainer" id="messagesContainer">
+        </div>
+        <div class="subMenuNavigationContainer">
+            <div class="newAbsenceRequestButton" id="newAbsenceRequestButton">New request</div>
+            <div class="pendingAbsenceRequestButton" id="pendingAbsenceRequestButton">Pending requests</div>
+            <div class="allAbsenceRequestButton" id="allAbsenceRequestButton">All requests</div>
+        </div>
+        <div class="absenceRequestContainer">
+            <h1>New absence request:</h1>
+            <form action="POST" id="newAbsenceForm">
+                {% csrf_token %}
+                <select class="absenceTypeValue" required>
+                    <option value="">
+                        Please choose an absence option
+                    </option>
+                    {% for absenceType in absenceTypes %}
+                        <option value="{{ absenceType.absenceValue }}">
+                            {{ absenceType.absenceDescription }}
+                        </option>
+                    {% endfor %}
+                </select>
+                <div class="dateInputsContainer">
+                    <div class="startDateInputContainer">
+                        <p>
+                            From:
+                        </p>
+                        <input class="startDateInput" id="startDateInput" type="date" required>
+                    </div>
+                    <div class="endDateInputContainer">
+                        <p>
+                            To:
+                        </p>
+                        <input class="endDateInput" id="endDateInput" type="date" required>
+                    </div>
+                </div>
+                <div class="managerContainer">
+                    Will be approved by:
+                    {{ requesterManager.get_full_name }}
+                </div>
+                <div class="buttonsContainer">
+                    <button class="sendAbsenceRequest" type="submit">Send</button>
+                </div>
+            </form>
+        </div>
+        <div class="pendingAbsenceRequestContainer">
+            <h1>Pending absence requests:</h1>
+            <table class="absenceRequestsTable">
+                <tr>
+                    <th>Name</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Work days</th>
+                    <th>Absence type</th>
+                </tr>
+                {% if pendingAbsenceRequestsList %}
+                    {% for pendingAbsenceRequest in pendingAbsenceRequestsList %}
+                        <tr>
+                            <td>
+                                <p class="absenceRequestOwner">
+                                    {{ pendingAbsenceRequest.owner.get_full_name }}
+                                </p>
+                            </td>
+                            <td>
+                                <p class="absenceRequestStartDate">
+                                    {{ pendingAbsenceRequest.getStartDateForTemplate }}
+                                </p>
+                            </td>
+                            <td>
+                                <p class="absenceRequestEndDate">
+                                    {{ pendingAbsenceRequest.getEndDateForTemplate }}
+                                </p>
+                            </td>
+                            <td>
+                                <p class="absenceRequestWorkDays">
+                                    {{ pendingAbsenceRequest.workDays }}
+                                </p>
+                            </td>
+                            <td>
+                                <p class="absenceRequestType">
+                                    {{ pendingAbsenceRequest.getAbsenceRequestType }}
+                                </p>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td>
+                            <p class="absenceRequestOwner">
+                                None
+                            </p>
+                        </td>
+                        <td>
+                            <p class="absenceRequestStartDate">
+                                None
+                            </p>
+                        </td>
+                        <td>
+                            <p class="absenceRequestEndDate">
+                                None
+                            </p>
+                        </td>
+                        <td>
+                            <p class="absenceRequestWorkDays">
+                                None
+                            </p>
+                        </td>
+                        <td>
+                            <p class="absenceRequestType">
+                                None
+                            </p>
+                        </td>
+                    </tr>
+                {% endif %}
+            </table>
+        </div>
+        <div class="allAbsenceRequestContainer">
+            <h1>All absence requests:</h1>
+            <table class="allAbsenceRequestsTable">
+                <tr>
+                    <th>Name</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Work days</th>
+                    <th>Absence type</th>
+                    <th>Status</th>
+                </tr>
+                {% if allAbsenceRequestsList %}
+                    {% for absenceRequest in allAbsenceRequestsList %}
+                        <tr>
+                            <td>
+                                <p class="absenceRequestOwner">
+                                    {{ absenceRequest.owner.get_full_name }}
+                                </p>
+                            </td>
+                            <td>
+                                <p class="absenceRequestStartDate">
+                                    {{ absenceRequest.getStartDateForTemplate }}
+                                </p>
+                            </td>
+                            <td>
+                                <p class="absenceRequestEndDate">
+                                    {{ absenceRequest.getEndDateForTemplate }}
+                                </p>
+                            </td>
+                            <td>
+                                <p class="absenceRequestWorkDays">
+                                    {{ absenceRequest.workDays }}
+                                </p>
+                            </td>
+                            <td>
+                                <p class="absenceRequestType">
+                                    {{ absenceRequest.getAbsenceRequestType }}
+                                </p>
+                            </td>
+                            <td>
+                                <p class="absenceRequestType">
+                                    {{ absenceRequest.getAbsenceRequestStatus }}
+                                </p>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td>
+                            <p class="absenceRequestOwner">
+                                None
+                            </p>
+                        </td>
+                        <td>
+                            <p class="absenceRequestStartDate">
+                                None
+                            </p>
+                        </td>
+                        <td>
+                            <p class="absenceRequestEndDate">
+                                None
+                            </p>
+                        </td>
+                        <td>
+                            <p class="absenceRequestWorkDays">
+                                None
+                            </p>
+                        </td>
+                        <td>
+                            <p class="absenceRequestType">
+                                None
+                            </p>
+                        </td>
+                        <td>
+                            <p class="absenceRequestAction">
+                                None
+                            </p>
+                        </td>
+                        <td>
+                            <p class="absenceRequestAction">
+                                None
+                            </p>
+                        </td>
+                    </tr>
+                {% endif %}
+            </table>
+        </div>
+    {% endblock %}
+    {% block jsContent %}var csrftoken = '{{ csrf_token }}';{% endblock %}

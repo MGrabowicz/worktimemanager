@@ -1,0 +1,5 @@
+Profile:
+-edit Profile
+Manager panel:
+-adding ppl to team
+-accepting timesheets

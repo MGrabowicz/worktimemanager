@@ -1,0 +1,312 @@
+:root {
+    --fs-l: 1.2rem;
+    --grey-dark: rgb(21, 23, 25);
+    --grey-middle: rgb(42, 43, 45);
+    --grey-bright: rgb(168, 168, 168);
+    --grey-background: rgb(237, 237, 237);
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    border-radius: 3px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.subMenuNavigationContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.newAbsenceRequestButton,
+.pendingAbsenceRequestButton,
+.allAbsenceRequestButton {
+    flex-grow: 1;
+    text-align: center;
+    background-color: var(--grey-middle);
+    color: white;
+    font-family: Arial;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.newAbsenceRequestButton {
+    background-color: var(--grey-bright);
+}
+
+.personalStartTime,
+.personalEndTime,
+.personalBreakTime {
+    font-family: Arial;
+    color: black;
+    background-color: transparent;
+}
+
+.buttonsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+    margin-bottom: 20px;
+}
+
+.managerContainer {
+    margin-bottom: 20px;
+}
+
+@keyframes messagePopupAnimation {
+    0% {
+        top: -10vh;
+    }
+    20% {
+        top: -10vh;
+    }
+    40% {
+        top: 0.5vh;
+    }
+    60% {
+        top: 0.5vh;
+    }
+    80% {
+        top: -10vh;
+    }
+    100% {
+        top: -10vh;
+    }
+}
+
+.messagesContainer {
+    color: white;
+    font-size: 0.7vw;
+    width: 30%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.messageContainer {
+    background-color: var(--grey-middle);
+    color: white;
+    box-shadow: 0 0 10px var(--grey-middle);
+    font-size: 0.7vw;
+    position: absolute;
+    top: -10vh;
+    white-space: nowrap;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 3px;
+    animation-name: messagePopupAnimation;
+    animation-duration: 8s;
+}
+
+.formTitleSpan {
+    font-weight: bold;
+    font-size: 1vw;
+    margin-bottom: 1.5vh;
+}
+
+.formLabel {
+    font-size: .9vw;
+    width: 50%;
+    justify-self: flex-start;
+    color: rgb(145, 145, 145);
+}
+
+.allAbsenceRequestContainer,
+.pendingAbsenceRequestContainer {
+    display: none;
+}
+
+.absenceRequestContainer,
+.pendingAbsenceRequestContainer,
+.allAbsenceRequestContainer,
+form {
+    background-color: var(--grey-dark);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    color: white;
+    font-family: Arial;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: .9vw;
+    width: 100%;
+}
+
+form {
+    min-width: 100%;
+}
+
+button {
+    width: 100%;
+    background-color: var(--grey-middle);
+    font-size: .9vw;
+    color: rgb(168, 168, 168);
+    font-family: 'Raleway', sans-serif;
+    border: none;
+    border-radius: 3px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+button:hover {
+    color: white;
+}
+
+select,
+.selectMembers {
+    width: 50%;
+    margin-bottom: 1.5vh;
+    border-radius: 3px;
+    font-size: .7vw;
+    background-color: var(--grey-background);
+    font-family: Arial;
+}
+
+input {
+    width: 50%;
+    border: none;
+    border-bottom: 1px solid rgb(42, 43, 45);
+    margin-bottom: 1.5vh;
+    font-size: .7vw;
+    font-family: 'Raleway', sans-serif;
+}
+
+input:active,
+input:focus {
+    outline: none;
+    border: none;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    background: none;
+    display: none;
+}
+
+a.authLink:link,
+a.teamDetailButton:link,
+a.authLink:visited,
+a.teamDetailButton:visited {
+    color: white;
+    text-decoration: none;
+    text-shadow: none
+}
+
+a.authLink:hover,
+a.teamDetailButton:hover,
+a.authLink:active,
+a.teamDetailButton:active {
+    color: rgb(214, 214, 214);
+    text-decoration: none;
+    text-shadow: none;
+}
+
+.absenceRequestsTable,
+.allAbsenceRequestsTable {
+    font-family: Arial;
+    white-space: nowrap;
+    border-collapse: collapse;
+    margin: 25px 0;
+    box-shadow: 0 0 10px black;
+}
+
+.absenceRequestsTable tr,
+.allAbsenceRequestsTable tr {
+    background-color: rgb(21, 23, 25);
+    color: #ffffff;
+    text-align: left;
+}
+
+.absenceRequestsTable td,
+.allAbsenceRequestsTable td {
+    text-align: center;
+}
+
+.absenceRequestsTable th,
+.absenceRequestsTable td,
+.allAbsenceRequestsTable th,
+.allAbsenceRequestsTable td {
+    padding: 12px 15px;
+}
+
+.absenceRequestsTable tbody tr,
+.allAbsenceRequestsTable tbody tr {
+    border-bottom: 1px solid rgb(42, 43, 45);
+}
+
+.absenceRequestsTable tbody tr:nth-of-type(even),
+.allAbsenceRequestsTable tbody tr:nth-of-type(even) {
+    background-color: rgb(42, 43, 45);
+}
+
+.absenceRequestsTable tbody tr:last-of-type,
+.allAbsenceRequestsTable tbody tr:last-of-type {
+    border-bottom: 2px solid rgb(21, 23, 25);
+}
+
+.dateInputsContainer {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.startDateInputContainer,
+.endDateInputContainer {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--grey-background);
+    color: black;
+    border-radius: 5px;
+}
+
+.startDateInputContainer {
+    margin-right: 10px;
+}
+
+.startDateInput,
+.endDateInput {
+    background-color: var(--grey-background);
+    color: black;
+    font-family: Arial;
+    border: none;
+    width: 80%;
+    border-radius: 3px;
+    text-align: center;
+    /*padding-left: 35px;*/
+    /*padding-right: 35px;*/
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    /*filter: invert(1);*/
+    /*left: -21%;*/
+    /*position: relative;*/
+    /*background-color: transparent;*/
+}

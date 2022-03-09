@@ -1,0 +1,188 @@
+:root {
+    --fs-l: 1.2rem;
+    --grey-dark: rgb(21, 23, 25);
+    --grey-middle: rgb(42, 43, 45);
+    --grey-bright: rgb(168, 168, 168);
+    --grey-background: rgb(237, 237, 237);
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 40%;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: var(--grey-dark);
+    color: white;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.personalStartTime,
+.personalEndTime,
+.personalBreakTime {
+    font-family: Arial;
+    color: white;
+    background-color: transparent;
+}
+
+.buttonsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.messagesContainer {
+    width: 45%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 1vh;
+    background-color: rgb(168, 168, 168);
+    color: white;
+    border-radius: 3px;
+    font-size: 0.7vw;
+}
+
+.formTitleSpan {
+    font-weight: bold;
+    font-size: 1vw;
+    margin-bottom: 1.5vh;
+}
+
+.formLabel {
+    font-size: .9vw;
+    width: 50%;
+    justify-self: flex-start;
+    color: rgb(145, 145, 145);
+}
+
+.formContainer,
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: .9vw;
+    width: 100%;
+}
+
+form {
+    min-width: 100%;
+}
+
+button {
+    width: 50%;
+    background-color: rgb(42, 43, 45);
+    font-size: .9vw;
+    color: rgb(168, 168, 168);
+    font-family: 'Raleway', sans-serif;
+    border: none;
+    border-radius: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+button:hover {
+    color: white;
+}
+
+select,
+.selectMembers {
+    width: 50%;
+    /*border: none;*/
+    /*border-bottom: 1px solid rgb(42, 43, 45);*/
+    margin-bottom: 1.5vh;
+    border-radius: 7px;
+    font-size: .7vw;
+    font-family: 'Raleway', sans-serif;
+}
+
+input {
+    color: white;
+    width: auto;
+    border: none;
+    border-bottom: 1px solid var(--grey-bright);
+    margin-bottom: 1.5vh;
+    font-size: .7vw;
+    font-family: 'Raleway', sans-serif;
+    background-color: var(--grey-background);
+}
+
+input:active,
+input:focus {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid var(--grey-bright);
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    background: none;
+    display: none;
+}
+
+a.authLink:link,
+a.teamDetailButton:link,
+a.authLink:visited,
+a.teamDetailButton:visited {
+    color: white;
+    text-decoration: none;
+    text-shadow: none
+}
+
+a.authLink:hover,
+a.teamDetailButton:hover,
+a.authLink:active,
+a.teamDetailButton:active {
+    color: rgb(214, 214, 214);
+    text-decoration: none;
+    text-shadow: none;
+}
+
+.teamsTable {
+    font-family: Arial;
+    white-space: nowrap;
+    border-collapse: collapse;
+    margin: 25px 0;
+    box-shadow: 0 0 10px black;
+    font-size: var(--fs-l);
+}
+
+.teamsTable tr {
+    background-color: var(--grey-dark);
+    color: white;
+    text-align: left;
+}
+
+.teamsTable td {
+    text-align: center;
+}
+
+.teamsTable th,
+.teamsTable td {
+    padding: 12px 15px;
+    width: 20rem
+}
+
+.teamsTable tbody tr {
+    border-bottom: 1px solid var(--grey-middle);
+}
+
+.teamsTable tbody tr:nth-of-type(even) {
+    background-color: var(--grey-middle);
+}
+
+.teamsTable tbody tr:last-of-type {
+    border-bottom: 2px solid var(--grey-dark);
+}

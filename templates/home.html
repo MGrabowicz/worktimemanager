@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block mainContent %}
+<h1>Home page</h1>
+        <div class="errorsContainer" id="errorsContainer">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+        </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+<!-- templates/registration/loginT.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'authentication.css' %}?{% now " U" %}" type="text/css" />{% endblock %}
+{% block title %}Edit profile{% endblock %}
+{% block mainContent %}
+<div class="mainContainer">
+    <div class="formContainer">
+        <span class="formTitleSpan">Edit profile</span>
+            {% csrf_token %}
+            <label>Start time for autocomplete:</label>
+            <input class="personalStartTime" type="time" value="{{ personalStartTime }}">
+            <label>End time for autocomplete:</label>
+            <input class="personalEndTime" type="time" value="{{ personalEndTime }}">
+            <label>Break time for autocomplete:</label>
+            <input class="personalBreakTime" type="time" value="{{ personalBreakTime }}">
+            <button class="saveProfile" type="submit">Save</button>
+    </div>
+</div>
+{% endblock %}
+{% block jsContent %}
+$(".saveProfile").click(function() {
+    var personalStartTime = document.getElementsByClassName("personalStartTime")[0].value;
+    var personalEndTime = document.getElementsByClassName("personalEndTime")[0].value;
+    var personalBreakTime = document.getElementsByClassName("personalBreakTime")[0].value;
+    $.ajax({
+        url: '/accounts/editProfile',
+        type: 'post',
+        data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            action: 'saveProfile',
+            personalStartTime: personalStartTime,
+            personalEndTime: personalEndTime,
+            personalBreakTime: personalBreakTime,
+        },
+        success: function(json) {
+            {% comment %} var div = '<div class="messageContainer" id="messageContainer">' + json['djangoMessage'] + '</div>';
+            document.getElementById("messagesContainer").innerHTML = div; {% endcomment %}
+        },
+    })
+})
+{% endblock %}

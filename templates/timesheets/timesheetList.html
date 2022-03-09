@@ -1,0 +1,43 @@
+<!-- templates/registration/loginT.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'timesheetList.css' %}?{% now " U" %}" type="text/css" />{% endblock %}
+{% block title %}Teams list{% endblock %}
+{% block mainContent %}
+<div class="mainContainer">
+    <div class="formContainer">
+            <table class="timesheetTable">
+                <tr>
+                    <th>Year</th>
+                    <th>Month</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                {% for timesheet in timesheetList %}
+                <tr>
+                    <td>{{ timesheet.timesheetYear }}</td>
+                    <td>{{ timesheet.monthName }}</td>
+                    <td>{{ timesheet.timesheetStatus }}</td>
+                    <td><a class="sideBarLink" href="{% url 'createTimesheet' timesheet.monthNumber%}">
+                        {% if timesheet.timesheetStatus == "Not created" %}Create
+                        {% elif timesheet.timesheetStatus == "Sent to approve" or timesheet.timesheetStatus == "Approved" %}View
+                        {% else %}Edit
+                        {% endif %}
+                    </a></td>
+                </tr>
+                {% endfor %}
+            </table>
+    </div>
+    {% if messages %}
+    <div class="messagesContainer" id="messagesContainer">
+        {% for message in messages %}
+        {{ message }}
+        <br>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+{% block jsContent %}
+{% endblock %}

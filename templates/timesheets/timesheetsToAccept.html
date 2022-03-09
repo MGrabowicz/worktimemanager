@@ -1,0 +1,47 @@
+<!-- templates/registration/loginT.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'timesheetsToAcceptList.css' %}?{% now " U" %}" type="text/css" />{% endblock %}
+{% block title %}Teams list{% endblock %}
+{% block mainContent %}
+<div class="mainContainer">
+    <div class="formContainer">
+            <table class="timesheetTable">
+                <tr>
+                    <th>Name</th>
+                    <th>Month</th>
+                    <th>Year</th>
+                    <th>Action</th>
+                </tr>
+                {% if timesheets %}
+                {% for timesheet in timesheets %}
+                <tr>
+                    <td><p class="fullDate">{{ timesheet.timesheetOwner.get_full_name }}</p></td>
+                    <td><p class="dayOfWeek">{{ timesheet.month }}</p></td>
+                    <td><p class="startTimeInput">2022</p></td>
+                    <td><p class="endTimeInput"><a class="sideBarLink" href="{% url 'timesheetsManager' timesheet.pk%}">View</a></p></td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td><p class="fullDate">None</p></td>
+                    <td><p class="fullDate">None</p></td>
+                    <td><p class="fullDate">None</p></td>
+                    <td><p class="fullDate">None</p></td>
+                </tr>
+                {% endif %}
+            </table>
+    </div>
+    {% if messages %}
+    <div class="messagesContainer" id="messagesContainer">
+        {% for message in messages %}
+        {{ message }}
+        <br>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+{% block jsContent %}
+{% endblock %}

@@ -1,0 +1,182 @@
+:root {
+    --fs-l: 1.2rem;
+    --grey-dark: rgb(21, 23, 25);
+    --grey-middle: rgb(42, 43, 45);
+    --grey-bright: rgb(168, 168, 168);
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.sendBackComment {
+    width: 96%;
+    font-size: var(--fs-l);
+    font-family: Arial;
+    resize: none;
+    padding: 12px 15px;
+    margin-top: 25px;
+    color: white;
+    background-color: var(--grey-dark);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+
+.timesheetTable {
+    font-family: Arial;
+    white-space: nowrap;
+    border-collapse: collapse;
+    margin: 25px 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    font-size: var(--fs-l);
+}
+
+.timesheetTable tr {
+    background-color: var(--grey-dark);
+    color: white;
+    text-align: left;
+}
+
+.timesheetTable td {
+    text-align: center;
+}
+
+.timesheetTable th,
+.timesheetTable td {
+    padding: 12px 15px;
+    width: 20rem
+}
+
+.timesheetTable tbody tr {
+    border-bottom: 1px solid var(--grey-middle);
+}
+
+.timesheetTable tbody tr:nth-of-type(even) {
+    background-color: var(--grey-middle);
+}
+
+.timesheetTable tbody tr:last-of-type {
+    border-bottom: 2px solid var(--grey-dark);
+}
+
+.fullDateInput, .dayOfWeekInput, .startTimeInput, .endTimeInput, .breakTimeInput, .workTimeInput, .totalWorkTimeInput {
+    font-family: Arial;
+    color: white;
+    background-color: transparent;
+    font-size: var(--fs-l);
+    width: 100%;
+}
+
+.buttonsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+}
+
+
+@keyframes example {
+    0% {
+        top: -300px;
+    }
+    25% {
+        top: 0px;
+    }
+    50% {
+        top: 0px;
+    }
+    75% {
+        top: 0px;
+    }
+    100% {
+        top: -300px;
+    }
+}
+
+.messagesContainer {
+    position: absolute;
+    top: -300px;
+    width: 15%;
+    left: 50%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 1vh;
+    background-color: var(--grey-dark);
+    color: white;
+    border-radius: 3px;
+    font-size: 0.7vw;
+    animation-name: example;
+    animation-duration: 3s;
+}
+
+
+.formContainer,
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: .9vw;
+    width: 100%;
+}
+
+button {
+    width: 50%;
+    background-color: var(--grey-middle);
+    font-size: var(--fs-l);
+    color: var(--grey-bright);
+    font-family: 'Raleway', sans-serif;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+button:hover {
+    color: white;
+}
+
+button:disabled:hover {
+    color: var(--grey-bright);
+}
+
+input {
+    width: 50%;
+    border: none;
+    margin-top: .5vh;
+    margin-bottom: .5vh;
+    font-size: .7vw;
+    font-family: 'Raleway', sans-serif;
+}
+
+input:active,
+input:focus {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid white;
+}
+
+input:disabled {
+    color: var(--grey-bright);
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    background: none;
+    display: none;
+}

@@ -1,0 +1,28 @@
+<!-- templates/registration/loginT.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'authentication.css' %}?{% now " U" %}" type="text/css" />{% endblock %}
+{% block title %}Teams list{% endblock %}
+{% block mainContent %}
+<div class="mainContainer">
+    <div class="formContainer">
+        <span class="formTitleSpan">Teams list</span>
+        <table class="teamsTable">
+                <tr>
+                    <th>Name</th>
+                    <th>Manager</th>
+                </tr>
+                {% for team in teamList %}
+                <tr>
+                    <td><a class="teamDetailButton" href="{% url 'detailTeam' team.pk%}">{{ team }}</a></td>
+                    <td>{{ team.manager.get_full_name }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+    </div>
+</div>
+{% endblock %}
+{% block jsContent %}
+
+{% endblock %}
