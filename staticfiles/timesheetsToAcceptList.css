@@ -1,0 +1,192 @@
+:root {
+    --fs-l: 1.2rem;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 40%;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.sendBackComment {
+    width: 96%;
+    font-size: var(--fs-l);
+    font-family: Arial;
+    resize: none;
+    padding: 12px 15px;
+    margin-top: 25px;
+    color: white;
+    background-color: rgb(21, 23, 25);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+input:disabled {
+    color: grey;
+}
+
+.timesheetTable {
+    font-family: Arial;
+    white-space: nowrap;
+    border-collapse: collapse;
+    margin: 25px 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.timesheetTable tr {
+    background-color: rgb(21, 23, 25);
+    color: #ffffff;
+    text-align: left;
+}
+
+.timesheetTable td {
+    text-align: center;
+}
+
+.timesheetTable th,
+.timesheetTable td {
+    padding: 12px 15px;
+}
+
+.timesheetTable tbody tr {
+    border-bottom: 1px solid rgb(42, 43, 45);
+}
+
+.timesheetTable tbody tr:nth-of-type(even) {
+    background-color: rgb(42, 43, 45);
+}
+
+.timesheetTable tbody tr:last-of-type {
+    border-bottom: 2px solid rgb(21, 23, 25);
+}
+
+.fullDateInput, .dayOfWeekInput, .startTimeInput, .endTimeInput, .breakTimeInput, .workTimeInput, .totalWorkTimeInput {
+    font-family: Arial;
+    color: white;
+    min-width: 100%;
+    min-height: 100%;
+    background-color: transparent;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    background: none;
+    display: none;
+}
+
+.buttonsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.messagesContainer {
+    width: 45%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 1vh;
+    background-color: rgb(168, 168, 168);
+    color: white;
+    border-radius: 3px;
+    font-size: 0.7vw;
+}
+
+.formTitleSpan {
+    font-weight: bold;
+    font-size: 1vw;
+    margin-bottom: 1.5vh;
+}
+
+.formLabel {
+    font-size: .9vw;
+    width: 50%;
+    justify-self: flex-start;
+    color: rgb(145, 145, 145);
+}
+
+.formContainer,
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: .9vw;
+    width: 100%;
+}
+
+form {
+    min-width: 100%;
+}
+
+button {
+    width: 50%;
+    background-color: rgb(42, 43, 45);
+    font-size: .9vw;
+    color: rgb(168, 168, 168);
+    font-family: 'Raleway', sans-serif;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+button:hover {
+    color: white;
+}
+
+button:disabled:hover {
+    color: rgb(168, 168, 168);
+}
+
+select, .selectMembers {
+    width: 50%;
+    /*border: none;*/
+    /*border-bottom: 1px solid rgb(42, 43, 45);*/
+    margin-bottom: 1.5vh;
+    border-radius: 7px;
+    font-size: .7vw;
+    font-family: 'Raleway', sans-serif;
+}
+
+input {
+    width: 50%;
+    border: none;
+    margin-top: .5vh;
+    margin-bottom: .5vh;
+    font-size: .7vw;
+    font-family: 'Raleway', sans-serif;
+}
+
+input:active,
+input:focus {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid white;
+}
+
+a.authLink:link,
+a.authLink:visited {
+    color: white;
+    text-decoration: none;
+    text-shadow: none
+}
+
+a.authLink:hover,
+a.authLink:active {
+    color: rgb(214, 214, 214);
+    text-decoration: none;
+    text-shadow: none;
+}
