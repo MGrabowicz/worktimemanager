@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'worktimemanager',
+        'NAME': 'ddbefe12kgs9i6',
         'USER': 'nblvfxzprqinru',
         'PASSWORD': '4b65823e9c4c4072903f21672fec4ce44bbd605f866c212df2ced0e064de42aa',
         'HOST': 'ec2-52-211-158-144.eu-west-1.compute.amazonaws.com',
