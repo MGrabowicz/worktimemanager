@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-swedb$tzk926ae5w4s&tczht3)t=lfp$#qrq&26uo-%sqw#5-+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'worktimemanager',
         'USER': 'postgres',
         'PASSWORD': 'root',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }
@@ -143,9 +143,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # EMAIL CONFIG
 
-EMAIL_FROM_USER = 'elpolakogp@gmail.com'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'elpolakogp@gmail.com'
-EMAIL_HOST_PASSWORD = 'Passat1989#@!'
+EMAIL_FROM_USER = 'mati23m2@wp.pl'
+EMAIL_HOST = 'smtp.wp.pl'
+EMAIL_HOST_USER = 'mati23m2@wp.pl'
+EMAIL_HOST_PASSWORD = 'mATEUSZ!23'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
