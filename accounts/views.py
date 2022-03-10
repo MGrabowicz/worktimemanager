@@ -59,7 +59,7 @@ def signupView(request):
             wtmU = wtmUser(user=createdUser)
             wtmU.save()
             # Turned off for testing purpose
-            # sendVerificationEmail(request, createdUser)
+            sendVerificationEmail(request, createdUser)
             messages.info(request, "Account created successfully.")
             messages.info(request, "Check your mail for activation mail.")
             return redirect('login')
