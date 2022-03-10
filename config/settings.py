@@ -144,9 +144,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # EMAIL CONFIG
 
-EMAIL_FROM_USER = 'mati23m2@wp.pl'
-EMAIL_HOST = 'smtp.wp.pl'
-EMAIL_HOST_USER = 'mati23m2@wp.pl'
-EMAIL_HOST_PASSWORD = 'mATEUSZ!23'
-EMAIL_USE_SSL = True
-EMAIL_PORT = 465
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_FROM_USER = 'mgrabowiczdjangoproject@outlook.com'
+EMAIL_HOST = 'smtp-mail.outlook.com'
+EMAIL_HOST_USER = 'mgrabowiczdjangoproject@outlook.com'
+EMAIL_HOST_PASSWORD = 'Dummypassword!23'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587

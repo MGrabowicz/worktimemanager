@@ -110,7 +110,7 @@ select,
 }
 
 input {
-    color: white;
+    color: black;
     width: auto;
     border: none;
     border-bottom: 1px solid var(--grey-bright);

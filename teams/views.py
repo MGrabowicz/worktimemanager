@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, resolve_url
 from django.urls import reverse
-
+from django.http import JsonResponse
+import json
 from accounts.models import wtmUser
-from teams.forms import CreateTeamForm
 from teams.models import Team
 
 
@@ -13,20 +13,22 @@ def createTeamView(request):
     managerCandidates = User.objects.filter(wtmuser__promotedToManager=True)
     teamCandidates = User.objects.filter(wtmuser__team=None)
     if request.POST:
-        createTeamForm = CreateTeamForm(data=request.POST, managerCandidates=managerCandidates,
-                                        teamCandidates=teamCandidates)
-        if createTeamForm.is_valid():
-            newTeam = createTeamForm.save()
-            for user in newTeam.users.all():
+        if request.POST.get("action") == "createTeamRequest":
+            teamName = request.POST.get("teamName")
+            managerSelect = json.loads(request.POST.get("managerSelect"))
+            userSelect = json.loads(request.POST.get("userSelect"))
+            manager = User.objects.get(pk=managerSelect)
+            users = User.objects.filter(pk__in=userSelect)
+            createdTeam = Team.objects.create(name=teamName, manager=manager)
+            createdTeam.users.set(users)
+            for user in createdTeam.users.all():
                 tempUser = wtmUser.objects.get(user=user)
-                tempUser.team = newTeam
+                tempUser.team = createdTeam
                 tempUser.save()
-            return HttpResponseRedirect(reverse('detailTeam', args=(newTeam.pk,)))
-        else:
-            print(createTeamForm.errors)
-    else:
-        createTeamForm = CreateTeamForm(managerCandidates=managerCandidates, teamCandidates=teamCandidates)
-    return render(request, 'teams/createTeam.html', {'groupForm': createTeamForm})
+                return JsonResponse({'createdTeamId': createdTeam.pk,})
+    return render(request, 'teams/createTeam.html', {
+        'managerCandidates': managerCandidates,
+        'teamCandidates': teamCandidates})
 
 
 def listTeamsView(request):

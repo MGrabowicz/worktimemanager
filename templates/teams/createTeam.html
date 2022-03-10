@@ -1,28 +1,45 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'teams.css' %}?{% now " U" %}" type="text/css" />{% endblock %}
+    <link rel="stylesheet"
+          href="{% static 'teams.css' %}?{% now " U" %}"
+          type="text/css"/>
+    <script type="text/javascript" src="{% static 'createTeam.js' %}?{% now " U" %}"></script>
+{% endblock %}
 {% block title %}Create new team{% endblock %}
 {% block mainContent %}
-<div class="mainContainer">
-    <div class="formContainer">
-        <span class="formTitleSpan">Creating new team</span>
-        <form method="post">
-            {% csrf_token %}
-            {% for field in groupForm %}
-            <span class="formLabel">{{ field.label_tag }}</span>
-            {{ field }}
-            {% endfor %}
+    <div class="mainContainer">
+        <div class="formContainer">
+            <span class="formTitleSpan">Creating new team</span>
+            <form method="post" id="createTeamForm">
+                {% csrf_token %}
+                <span class="formLabel">Team name:</span>
+                <input type="text" class="teamName" placeholder="Team name">
+            </input>
+            <span class="formLabel">Manager:</span>
+            <select class="managerSelect" required>
+                {% for managerCandidate in managerCandidates %}
+                    <option value="{{ managerCandidate.pk }}">
+                        {{ managerCandidate.get_full_name }}
+                    </option>
+                {% endfor %}
+            </select>
+            <span class="formLabel">Users:</span>
+            <select class="userSelect" multiple required>
+                {% for teamCandidate in teamCandidates %}
+                    <option value="{{ teamCandidate.pk }}">
+                        {{ teamCandidate.get_full_name }}
+                    </option>
+                {% endfor %}
+            </select>
             <button type="submit">Create team</button>
         </form>
-            {% if groupForm.errors %}
-            <div class="messagesContainer" id="messagesContainer">
-                {{ groupForm.name.errors }}
-            </div>
-                {% endif %}
+        {% if groupForm.errors %}
+            <div class="messagesContainer" id="messagesContainer">{{ groupForm.name.errors }}</div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
 {% block jsContent %}
-
+var csrftoken = '{{ csrf_token }}';
 {% endblock %}
