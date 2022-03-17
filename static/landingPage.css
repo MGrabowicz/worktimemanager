@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Raleway:wght@400&display=swap');
+:root {
+    --fs-l: 1.2rem;
+    --grey-dark: rgb(21, 23, 25);
+    --grey-middle: rgb(42, 43, 45);
+    --grey-bright: rgb(168, 168, 168);
+    --grey-background: rgb(237, 237, 237);
+}
+
+.landingPage {
+    background-image: url('backgroundimage.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
+
+.landingPageC {
+    max-height: 100vh;
+    padding-bottom: 100px;
+}
+
+.gallerySection {
+    height: 100vh;
+}
+
+.overlay {
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(17, 17, 17, 0.85);
+}
+
+.landingPageC .formContainer {
+    margin-top: 50px;
+}
+
+.landingPageC h1 {
+    font-size: 11rem;
+    width: 100%;
+    min-width: 100%;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: white;
+    margin-top: 50px;
+}
+
+.landingDesc {
+    color: var(--grey-background);
+    font-size: 25px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 1.5;
+    padding-top: .3em;
+    max-width: 100%;
+}
+
+.formContainer {
+    line-height: 1.2;
+    color: black;
+    background-color: var(--grey-background);
+    border-radius: 3px;
+    box-shadow: 0px 0px 4px black;
+    padding: 1em;
+}
+
+.carousel-inner {
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px black;
+    min-height: fit-content !important;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.692);
+    border-radius: 5px;
+}
+
+@media only screen and (max-width: 1920px) {
+    .landingPageC h1 {
+        font-size: 7rem;
+    }
+    .landingDesc {
+        font-size: 20px;
+    }
+}

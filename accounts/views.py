@@ -19,10 +19,6 @@ from django.conf import settings
 
 
 def homeView(request):
-    return render(request, 'home.html')
-
-
-def loginView(request):
     if request.method == 'POST':
         userLoginForm = LogInForm(data=request.POST)
         if userLoginForm.is_valid():
@@ -32,14 +28,14 @@ def loginView(request):
             if user.wtmuser.isEmailVerified:
                 user = authenticate(username=username, password=password)
                 login(request, user)
-                return redirect('home')
+                return redirect('createAbsence')
             else:
                 messages.error(request, "You have to activate your account first!")
                 messages.error(request,
                                "If you have problem with receiving activation email you can request new one here:")
                 messages.error(request,
                                format_html("<a href='/accounts/resendActivationEmail' class='authLink'>Send email</a>"))
-                return redirect('login')
+                return redirect('home')
         else:
             messages.error(request,
                            "If you don't remeber your password and want to change it click here:")
@@ -48,7 +44,7 @@ def loginView(request):
             print(userLoginForm.errors)
     else:
         userLoginForm = LogInForm()
-    return render(request, 'accounts/loginT.html', {'loginForm': userLoginForm})
+    return render(request, 'home.html', {'loginForm': userLoginForm})
 
 
 def signupView(request):
@@ -62,12 +58,12 @@ def signupView(request):
             sendVerificationEmail(request, createdUser)
             messages.info(request, "Account created successfully.")
             messages.info(request, "Check your mail for activation mail.")
-            return redirect('login')
+            return redirect('home')
         else:
             print(userCreateForm.errors)
     else:
         userCreateForm = SignUpForm()
-    return render(request, 'accounts/signupT.html', {'signupForm': userCreateForm})
+    return render(request, 'homeSignup.html', {'loginForm': userCreateForm})
 
 
 def resendActivationEmailView(request):

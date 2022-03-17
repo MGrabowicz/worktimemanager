@@ -60,7 +60,7 @@
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="formContainer col-lg-3 col-md-6 col-sm-6 desc" align="center">
-                    <h2>Login:</h2>
+                    <h2>Sign in:</h2>
                     <form method="post">
                         {% csrf_token %}
                         {% for field in loginForm %}
@@ -69,14 +69,19 @@
                             </div>
                         {% endfor %}
                         <div class="form-group col-lg-10 col-md-9 col-sm-9">
-                            <button type="submit" class="loginButton btn btn-dark col-lg-12 col-md-12 col-sm-12">Login</button>
+                            <button type="submit" class="loginButton btn btn-dark col-lg-12 col-md-12 col-sm-12">Sign up</button>
                         </div>
                         {% if loginForm.errors %}
                             <div class="alert alert-danger col-lg-12 col-md-9 col-sm-9"
                                  role="alert"
                                  align="left"
                                  id="messagesContainer">
-                                {% for error in loginForm.non_field_errors %}{{ error }}{% endfor %}
+                                 {% for error in loginForm.username.errors %}
+                                 {{ error }}<br>
+                             {% endfor %}
+                             {% for error in loginForm.password2.errors %}
+                                 {{ error }}<br>
+                             {% endfor %}
                             </div>
                         {% endif %}
                         {% if messages %}
@@ -90,7 +95,6 @@
                                 {% endfor %}
                             </div>
                         {% endif %}
-                        <a class="link-dark" href="{% url 'signup' %}">Don't have account</a>
                     </form>
                 </div>
             </div>
