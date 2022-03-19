@@ -1,0 +1,15 @@
+<!-- templates/registration/loginT.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'timesheetList.css' %}?{% now " U" %}" type="text/css" />{% endblock %}
+{% block title %}You need to be assigned to team{% endblock %}
+{% block mainContent %}
+<div class="mainContainer">
+    <div class="formContainer">
+        <h1>You need to be assigned to team in order to access this section.</h1>
+    </div>
+</div>
+{% endblock %}
+{% block jsContent %}
+{% endblock %}

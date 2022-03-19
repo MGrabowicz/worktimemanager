@@ -18,6 +18,11 @@ from config import settings
 
 @login_required(login_url='home')
 def createAbsenceView(request):
+    try:
+        if not wtmUser.objects.get(user=request.user).doUserHaveTeam():
+            return render(request, 'errors/noTeamUser.html')
+    except wtmUser.DoesNotExist:
+        print("Something went wrong.")
     pendingAbsenceRequestsList = Absence.objects.filter(
         owner=request.user, statusType='SENTTOAPPROVE').order_by('-pk')
     allAbsenceRequestsList = Absence.objects.filter(owner=request.user).order_by('-pk')

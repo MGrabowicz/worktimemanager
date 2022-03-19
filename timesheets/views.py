@@ -17,6 +17,11 @@ from .models import TimesheetDay, Timesheet
 
 @login_required(login_url='home')
 def timesheetsPersonalListView(request):
+    try:
+        if not wtmUser.objects.get(user=request.user).doUserHaveTeam():
+            return render(request, 'errors/noTeamUser.html')
+    except wtmUser.DoesNotExist:
+        print("Something went wrong.")
     timesheetsList = []
     month = datetime.date.today().month
     currentYear = datetime.date.today().year
@@ -48,6 +53,11 @@ def timesheetsPersonalListView(request):
 
 @login_required(login_url='home')
 def timesheetPersonalView(request, timesheetMonth):
+    try:
+        if not wtmUser.objects.get(user=request.user).doUserHaveTeam():
+            return render(request, 'errors/noTeamUser.html')
+    except wtmUser.DoesNotExist:
+        print("Something went wrong.")
     dateObject = []
     timesheet = None
     currentYear = datetime.date.today().year

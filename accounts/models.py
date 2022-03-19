@@ -15,3 +15,9 @@ class wtmUser(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    def doUserHaveTeam(self):
+        if self.team:
+            return True
+        else:
+            return False

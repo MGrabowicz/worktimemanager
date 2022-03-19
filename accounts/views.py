@@ -28,7 +28,7 @@ def homeView(request):
             if user.wtmuser.isEmailVerified:
                 user = authenticate(username=username, password=password)
                 login(request, user)
-                return redirect('createAbsence')
+                return redirect('editProfile')
             else:
                 messages.error(request, "You have to activate your account first!")
                 messages.error(request,
