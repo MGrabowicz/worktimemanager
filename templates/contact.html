@@ -1,0 +1,16 @@
+<!-- templates/registration/loginT.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'authentication.css' %}?{% now " U" %}" type="text/css" />{% endblock %}
+{% block title %}Edit profile{% endblock %}
+{% block mainContent %}
+<div class="mainContainer">
+    <div class="formContainer">
+        <span class="formTitleSpan">Contact</span>
+            <p>If you want to contact me feel free to send me email:<a href="mailto:mateuszgrabowicz5b@wp.pl" class="normalLink">send email</a></p>
+    </div>
+</div>
+{% endblock %}
+{% block jsContent %}
+{% endblock %}

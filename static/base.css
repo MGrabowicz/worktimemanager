@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Raleway:wght@400&display=swap');
-
 body {
     background-color: rgb(237, 237, 237);
     margin: 0px;
@@ -112,4 +111,18 @@ a.sideBarLink:active {
     text-shadow: none;
     position: relative;
     left: +7%;
+}
+
+a.normalLink:link,
+a.normalLink:visited {
+    color: rgb(145, 145, 145);
+    text-decoration: none;
+    text-shadow: none
+}
+
+a.normalLink:hover,
+a.normalLink:active {
+    color: white;
+    text-decoration: none;
+    text-shadow: none;
 }

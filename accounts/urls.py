@@ -1,9 +1,10 @@
 from django.urls import path
 
 from accounts.views import signupView, activateUser, resendActivationEmailView, passwordResetRequestView, \
-    passwordResetView, editProfileView
+    passwordResetView, editProfileView, contactView
 
 urlpatterns = [
+    path('contact/', contactView, name='contact'),
     path('signup/', signupView, name='signup'),
     path('activateUser/<uidb64>/<token>', activateUser, name='activate'),
     path('resendActivationEmail', resendActivationEmailView, name='resendActivationEmail'),

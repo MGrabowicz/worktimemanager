@@ -18,6 +18,9 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 
 
+def contactView(request):
+    return render(request, 'contact.html')
+
 def homeView(request):
     if request.method == 'POST':
         userLoginForm = LogInForm(data=request.POST)
