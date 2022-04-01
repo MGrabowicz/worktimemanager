@@ -10,7 +10,13 @@ Features:
   <li>absences approval system</li>
   <li>email notifications</li>
 </ul>
-It was my first Django project that required more complicated database structure and first application with use of emails eg. for activating account or informing that timesheet has been sent for approval. Project has been made with Django, Bootstrap(only for landing page), Javascript(Jquery) and Postgresql database.
+Stack:
+<ul>
+  <li>Django</li>
+  <li>Javascript with jquery</li>
+  <li>Bootstrap(landing page only)</li>
+  <li>Postgresql</li>
+</ul>
 <img src="https://user-images.githubusercontent.com/95509927/161322304-50aa2e66-1d86-4068-b164-8eaac794d6ac.png"/>
 <img src="https://user-images.githubusercontent.com/95509927/161322305-de8fe873-e2f3-477d-a169-37f668041e0e.png"/>
 <img src="https://user-images.githubusercontent.com/95509927/161322303-1553a7a0-3e38-4cb2-a5d2-dc7264f25263.png"/>
